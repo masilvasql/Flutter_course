@@ -16,7 +16,11 @@ class Resposta extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            textStyle: const TextStyle(color: Colors.red)),
+            primary: Colors.lightBlue,
+            elevation: 5,
+            textStyle: const TextStyle(
+              fontWeight: FontWeight.bold,
+            )),
         child: Text(texto),
         onPressed: quandoSelecionado,
       ),
