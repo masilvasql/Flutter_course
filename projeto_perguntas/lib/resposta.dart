@@ -16,7 +16,7 @@ class Resposta extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            primary: Colors.lightBlue,
+            primary: Colors.lightBlueAccent,
             elevation: 5,
             textStyle: const TextStyle(
               fontWeight: FontWeight.bold,
