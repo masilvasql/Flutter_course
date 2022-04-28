@@ -8,7 +8,7 @@ main() => runApp(const PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
-  int _pontuacaoTotal = 0;
+  var _pontuacaoTotal = 0;
 
   final List<Map<String, Object>> _perguntas = const [
     {
@@ -53,6 +53,13 @@ class _PerguntaAppState extends State<PerguntaApp> {
     }
   }
 
+  void _reiniciarQuestionario() {
+    setState(() {
+      _perguntaSelecionada = 0;
+      _pontuacaoTotal = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -66,7 +73,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 perguntas: _perguntas,
                 responder: _responder,
               )
-            : Resultado(pontuacao: _pontuacaoTotal),
+            : Resultado(
+                pontuacao: _pontuacaoTotal,
+                quandoReiniciarQuestionario: _reiniciarQuestionario),
       ),
     );
   }
