@@ -8,7 +8,7 @@ main() => runApp(const PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
-  var _pontuacaoTotal = 0;
+  int _pontuacaoTotal = 0;
 
   final List<Map<String, Object>> _perguntas = const [
     {
@@ -66,7 +66,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 perguntas: _perguntas,
                 responder: _responder,
               )
-            : const Resultado(),
+            : Resultado(pontuacao: _pontuacaoTotal),
       ),
     );
   }
