@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import "questao.dart";
 import "resposta.dart";
 
-main() => runApp(PerguntaApp());
+main() => runApp(const PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
@@ -30,12 +30,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
       }
     ];
 
-    List<Widget> respostas = [];
-
-    for (String textoResp
-        in perguntas[_perguntaSelecionada].cast()['respostas']) {
-      respostas.add(Resposta(texto: textoResp, quandoSelecionado: _responder));
-    }
+    List<String> respostas =
+        perguntas[_perguntaSelecionada].cast()['respostas'];
 
     return MaterialApp(
       home: Scaffold(
@@ -45,7 +41,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: <Widget>[
             Questao(texto: perguntas[_perguntaSelecionada]['texto'].toString()),
-            ...respostas,
+            ...respostas
+                .map((t) => Resposta(texto: t, quandoSelecionado: _responder))
+                .toList(),
           ],
         ),
       ),
