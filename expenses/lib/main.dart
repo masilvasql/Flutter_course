@@ -38,17 +38,32 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(
-            child: const Card(
-              child: Text('Gráfico'),
-              elevation: 5,
-              color: Colors.blue,
-            ),
+          const Card(
+            child: Text('Gráfico'),
+            elevation: 5,
+            color: Colors.blue,
           ),
           Column(
             children: _transactions.map((tr) {
               return Card(
-                child: Text(tr.title),
+                child: Row(children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: Colors.black,
+                      width: 2,
+                    )),
+                    padding: const EdgeInsets.all(10),
+                    child: Text(tr.value.toString()),
+                  ),
+                  Column(
+                    children: [Text(tr.title), Text(tr.date.toString())],
+                  )
+                ]),
               );
             }).toList(),
           )
