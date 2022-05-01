@@ -1,15 +1,22 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
 
-class TransactionForm extends StatelessWidget {
-  TransactionForm({
+class TransactionForm extends StatefulWidget {
+  const TransactionForm({
     Key? key,
     required this.onSubmit,
   }) : super(key: key);
 
-  final titleController = TextEditingController();
-  final valueController = TextEditingController();
   final void Function(String, double) onSubmit;
+
+  @override
+  State<TransactionForm> createState() => _TransactionFormState();
+}
+
+class _TransactionFormState extends State<TransactionForm> {
+  final titleController = TextEditingController();
+
+  final valueController = TextEditingController();
 
   _submitForm() {
     final title = titleController.text;
@@ -18,7 +25,7 @@ class TransactionForm extends StatelessWidget {
     if (title.isEmpty || value <= 0) {
       return;
     }
-    onSubmit(title, value);
+    widget.onSubmit(title, value);
   }
 
   @override

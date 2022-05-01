@@ -61,6 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _transactions.add(newTransaction);
     });
+
+    Navigator.of(context).pop(); // elimina um widget da pilha
   }
 
   _openTransactionFormModal(BuildContext context) {
