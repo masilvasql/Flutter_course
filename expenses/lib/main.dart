@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -16,7 +18,7 @@ class ExpensesApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
-      supportedLocales: [const Locale('pt', 'BR')],
+      supportedLocales: const [Locale('pt', 'BR')],
     );
   }
 }
@@ -44,7 +46,6 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Despesas Pessoais")),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           const Card(
@@ -55,47 +56,82 @@ class MyHomePage extends StatelessWidget {
           Column(
             children: _transactions.map((tr) {
               return Card(
-                child: Row(children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 10,
-                    ),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                      color: Colors.purple,
-                      width: 2,
-                    )),
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      'R\$ ${tr.value.toStringAsFixed(2)}',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                child: Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                        vertical: 10,
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border.all(
                         color: Colors.purple,
+                        width: 2,
+                      )),
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        'R\$ ${tr.value.toStringAsFixed(2)}',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purple,
+                        ),
                       ),
                     ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(tr.title,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )),
-                      Text(
-                          DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br')
-                              .format(tr.date),
-                          style: const TextStyle(
-                            color: Colors.grey,
-                          )),
-                    ],
-                  )
-                ]),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(tr.title,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            )),
+                        Text(
+                            DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br')
+                                .format(tr.date),
+                            style: const TextStyle(
+                              color: Colors.grey,
+                            )),
+                      ],
+                    ),
+                  ],
+                ),
               );
             }).toList(),
-          )
+          ),
+          Card(
+              elevation: 5,
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    // ignore: prefer_const_constructors
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: "Título",
+                      ),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: "Valor (R\$)",
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                            onPressed: null,
+                            child: Text(
+                              "Nova Transação",
+                              style: TextStyle(
+                                color: Colors.purple,
+                              ),
+                            ))
+                      ],
+                    )
+                  ],
+                ),
+              ))
         ],
       ),
     );
