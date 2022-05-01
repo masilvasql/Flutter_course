@@ -40,10 +40,10 @@ class ExpensesApp extends StatelessWidget {
         ),
         appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(
-            fontFamily: 'OpenSans',
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
         ),
       ),
     );
@@ -104,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text(
           'Despesas Pessoais',
         ),
+        toolbarTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
         actions: [
           IconButton(
             onPressed: () => _openTransactionFormModal(context),
@@ -115,12 +116,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              child: const Card(
-                child: Text('Gráfico'),
-                elevation: 5,
-                color: Colors.blue,
-              ),
+            const Card(
+              child: Text('Gráfico'),
+              elevation: 5,
+              color: Colors.blue,
             ),
             TransactionList(transactions: _transactions),
           ],
