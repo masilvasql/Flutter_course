@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class TransactionForm extends StatelessWidget {
@@ -12,6 +11,16 @@ class TransactionForm extends StatelessWidget {
   final valueController = TextEditingController();
   final void Function(String, double) onSubmit;
 
+  _submitForm() {
+    final title = titleController.text;
+    final value = double.tryParse(valueController.text) ?? 0.0;
+
+    if (title.isEmpty || value <= 0) {
+      return;
+    }
+    onSubmit(title, value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -22,12 +31,17 @@ class TransactionForm extends StatelessWidget {
           children: [
             TextField(
               controller: titleController,
+              onSubmitted: (_) => _submitForm(),
               decoration: InputDecoration(
                 labelText: "Título",
               ),
             ),
             TextField(
               controller: valueController,
+              onSubmitted: (_) =>
+                  _submitForm(), //Quando um parâmetro recebido na função não é usado, por convensão, usar o _
+              keyboardType: TextInputType.numberWithOptions(
+                  decimal: true), //Funciona no IOS e no Android
               decoration: InputDecoration(
                 labelText: "Valor (R\$)",
               ),
@@ -42,8 +56,7 @@ class TransactionForm extends StatelessWidget {
                       color: Colors.purple,
                     ),
                   ),
-                  onPressed: () => onSubmit(titleController.text,
-                      double.tryParse(valueController.text) ?? 0.0),
+                  onPressed: _submitForm,
                 )
               ],
             )
