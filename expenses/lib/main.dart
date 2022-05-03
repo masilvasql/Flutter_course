@@ -20,9 +20,10 @@ class ExpensesApp extends StatelessWidget {
 
     return MaterialApp(
       home: MyHomePage(),
-      localizationsDelegates: const [
+      localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [Locale('pt', 'BR')],
       theme: tema.copyWith(
@@ -31,16 +32,14 @@ class ExpensesApp extends StatelessWidget {
           secondary: Colors.amber,
         ),
         textTheme: tema.textTheme.copyWith(
-          headline6: TextStyle(
-            fontFamily: 'OpenSans',
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
+            bodyText2: TextStyle(
+          color: Colors.black,
+          fontFamily: 'QuickSand',
+          fontSize: 18,
+        )),
         appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(
-              fontFamily: 'OpenSans',
+              fontFamily: 'QuickSand',
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.white),
@@ -63,6 +62,12 @@ class _MyHomePageState extends State<MyHomePage> {
       id: 't1',
       title: 'Novo Tênis de corrida',
       value: 310.76,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Conta de Luz',
+      value: 211.30,
       date: DateTime.now(),
     ),
     Transaction(
