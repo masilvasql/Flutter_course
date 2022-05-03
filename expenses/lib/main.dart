@@ -33,10 +33,10 @@ class ExpensesApp extends StatelessWidget {
         ),
         textTheme: tema.textTheme.copyWith(
             bodyText2: TextStyle(
-          color: Colors.black,
-          fontFamily: 'QuickSand',
-          fontSize: 18,
-        )),
+                color: Colors.black,
+                fontFamily: 'QuickSand',
+                fontSize: 18,
+                fontWeight: FontWeight.bold)),
         appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(
               fontFamily: 'QuickSand',
@@ -57,25 +57,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Novo Tênis de corrida',
-      value: 310.76,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
+  final List<Transaction> _transactions = [
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Novo Tênis de corrida',
+    //   value: 310.76,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'Conta de Luz',
+    //   value: 211.30,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'Conta de Luz',
+    //   value: 211.30,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   _addTranscation(String title, double value) {
@@ -122,7 +122,10 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             const Card(
-              child: Text('Gráfico'),
+              child: Text(
+                'Gráfico',
+                style: TextStyle(fontWeight: FontWeight.normal),
+              ),
               elevation: 5,
               color: Colors.blue,
             ),
