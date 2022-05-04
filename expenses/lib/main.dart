@@ -33,11 +33,19 @@ class ExpensesApp extends StatelessWidget {
           secondary: Colors.amber,
         ),
         textTheme: tema.textTheme.copyWith(
-            bodyText2: TextStyle(
-                color: Colors.black,
-                fontFamily: 'QuickSand',
-                fontSize: 18,
-                fontWeight: FontWeight.bold)),
+          bodyText2: TextStyle(
+            color: Colors.black,
+            fontFamily: 'QuickSand',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        primaryTextTheme: tema.primaryTextTheme.copyWith(
+          bodyText1: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'QuickSand'),
+        ),
         appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(
               fontFamily: 'QuickSand',
