@@ -17,6 +17,10 @@ class ExpensesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    // ]);
+
     final ThemeData tema = ThemeData();
 
     return MaterialApp(
@@ -109,8 +113,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      title: const Text(
+      title: Text(
         'Despesas Pessoais',
+        style: TextStyle(
+          fontSize: 20 * MediaQuery.of(context).textScaleFactor,
+        ),
       ),
       toolbarTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
       actions: [
@@ -133,11 +140,11 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             SizedBox(
-              height: availableHeight * 0.25,
+              height: availableHeight * 0.30,
               child: Chart(_recentTransactions),
             ),
             SizedBox(
-              height: availableHeight * 0.75,
+              height: availableHeight * 0.70,
               child: TransactionList(
                   transactions: _transactions, onRemove: _removeTransaction),
             ),
