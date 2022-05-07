@@ -156,22 +156,24 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             if (_showChart || !isLandscape)
               SizedBox(
-                height: availableHeight * (isLandscape ? 0.7 : 0.3),
+                height: availableHeight * (isLandscape ? 0.8 : 0.3),
                 child: Chart(_recentTransactions),
               ),
             if (!_showChart || !isLandscape)
               SizedBox(
-                height: availableHeight * 0.70,
+                height: availableHeight * (isLandscape ? 1 : 0.7),
                 child: TransactionList(
                     transactions: _transactions, onRemove: _removeTransaction),
               ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _openTransactionFormModal(context),
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: !isLandscape
+          ? FloatingActionButton(
+              onPressed: () => _openTransactionFormModal(context),
+              child: Icon(Icons.add),
+            )
+          : SizedBox(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
