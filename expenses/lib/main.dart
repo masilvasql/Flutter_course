@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
         : Scaffold(
             appBar: appBar,
             body: bodyPage,
-            floatingActionButton: !isLandscape || Platform.isIOS
+            floatingActionButton: !isLandscape && Platform.isIOS
                 ? Container()
                 : FloatingActionButton(
                     onPressed: () => _openTransactionFormModal(context),
