@@ -135,10 +135,11 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             icon: Icon(_showChart ? Icons.list : Icons.bar_chart),
           ),
-        IconButton(
-          onPressed: () => _openTransactionFormModal(context),
-          icon: Icon(Icons.add),
-        ),
+        if (!isLandscape)
+          IconButton(
+            onPressed: () => _openTransactionFormModal(context),
+            icon: Icon(Icons.add),
+          ),
       ],
     );
 

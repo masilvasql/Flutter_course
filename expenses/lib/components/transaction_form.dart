@@ -48,66 +48,72 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: [
-            TextField(
-              controller: _titleController,
-              onSubmitted: (_) => _submitForm(),
-              decoration: InputDecoration(
-                labelText: "Título",
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 5,
+        child: Padding(
+          padding: EdgeInsets.only(
+              top: 10,
+              right: 10,
+              left: 10,
+              bottom: 10 + MediaQuery.of(context).viewInsets.bottom),
+          child: Column(
+            children: [
+              TextField(
+                controller: _titleController,
+                onSubmitted: (_) => _submitForm(),
+                decoration: InputDecoration(
+                  labelText: "Título",
+                ),
               ),
-            ),
-            TextField(
-              controller: _valueController,
-              onSubmitted: (_) =>
-                  _submitForm(), //Quando um parâmetro recebido na função não é usado, por convensão, usar o _
-              keyboardType: TextInputType.numberWithOptions(
-                  decimal: true), //Funciona no IOS e no Android
-              decoration: InputDecoration(
-                labelText: "Valor (R\$)",
+              TextField(
+                controller: _valueController,
+                onSubmitted: (_) =>
+                    _submitForm(), //Quando um parâmetro recebido na função não é usado, por convensão, usar o _
+                keyboardType: TextInputType.numberWithOptions(
+                    decimal: true), //Funciona no IOS e no Android
+                decoration: InputDecoration(
+                  labelText: "Valor (R\$)",
+                ),
               ),
-            ),
-            SizedBox(
-              height: 70,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              SizedBox(
+                height: 70,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Data Selecionada: ${DateFormat("dd/MM/yyyy", 'pt-br').format(_selectedDate)}",
+                      style: TextStyle(fontSize: 15, color: Colors.grey),
+                    ),
+                    TextButton(
+                      onPressed: _showDatePicker,
+                      child: Text(
+                        "Selecionar Data",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    "Data Selecionada: ${DateFormat("dd/MM/yyyy", 'pt-br').format(_selectedDate)}",
-                    style: TextStyle(fontSize: 15, color: Colors.grey),
-                  ),
-                  TextButton(
-                    onPressed: _showDatePicker,
+                  ElevatedButton(
                     child: Text(
-                      "Selecionar Data",
+                      "Nova Transação",
                       style: TextStyle(
+                        fontFamily: 'OpenSans',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    onPressed: _submitForm,
                   )
                 ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                  child: Text(
-                    "Nova Transação",
-                    style: TextStyle(
-                      fontFamily: 'OpenSans',
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  onPressed: _submitForm,
-                )
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
