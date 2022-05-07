@@ -1,4 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+import 'dart:io';
+
 import 'package:expenses/components/chart.dart';
 import 'package:expenses/components/transaction_form.dart';
 import 'package:expenses/models/transaction.dart';
@@ -154,6 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            // Switch.adaptive(value: true, onChanged: (value) {}), Adaptative = se adapta de acordo com a plataforma
             if (_showChart || !isLandscape)
               SizedBox(
                 height: availableHeight * (isLandscape ? 0.8 : 0.3),
@@ -168,12 +171,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: !isLandscape
-          ? FloatingActionButton(
+      floatingActionButton: !isLandscape || Platform.isIOS
+          ? Container()
+          : FloatingActionButton(
               onPressed: () => _openTransactionFormModal(context),
               child: Icon(Icons.add),
-            )
-          : SizedBox(),
+            ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
