@@ -1,56 +1,57 @@
-// ignore_for_file: constant_identifier_names, unnecessary_const
+// ignore_for_file: unnecessary_const
 
 import 'package:flutter/material.dart';
 
 import '../models/category.dart';
 
-const DUMMY_CATEGORIES = const [
-  Category(
+// ignore: constant_identifier_names
+const DUMMY_CATEGORIES = [
+  const Category(
     id: 'c1',
     title: 'Italiano',
     color: Colors.purple,
   ),
-  Category(
+  const Category(
     id: 'c2',
     title: 'Rápido & Fácil',
     color: Colors.red,
   ),
-  Category(
+  const Category(
     id: 'c3',
     title: 'Hamburgers',
     color: Colors.orange,
   ),
-  Category(
+  const Category(
     id: 'c4',
     title: 'Alemã',
     color: Colors.amber,
   ),
-  Category(
+  const Category(
     id: 'c5',
     title: 'Leve & Saudável',
     color: Colors.indigo,
   ),
-  Category(
+  const Category(
     id: 'c6',
     title: 'Exótica',
     color: Colors.green,
   ),
-  Category(
+  const Category(
     id: 'c7',
     title: 'Café da Manhã',
     color: Colors.lightBlue,
   ),
-  Category(
+  const Category(
     id: 'c8',
     title: 'Asiática',
     color: Colors.lightGreen,
   ),
-  Category(
+  const Category(
     id: 'c9',
     title: 'Francesa',
     color: Colors.pink,
   ),
-  Category(
+  const Category(
     id: 'c10',
     title: 'Verão',
     color: Colors.teal,
