@@ -19,10 +19,11 @@ class MyApp extends StatelessWidget {
           secondary: Colors.amber,
           primary: Colors.pink,
         ),
-        textTheme: const TextTheme(
+        textTheme: TextTheme(
           titleLarge: TextStyle(
             fontFamily: 'RobotoCondensed',
             fontSize: 20,
+            color: Colors.brown,
           ),
         ),
       ),
