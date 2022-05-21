@@ -24,10 +24,16 @@ class MyApp extends StatelessWidget {
           primary: Colors.pink,
         ),
         textTheme: const TextTheme(
-          titleLarge: TextStyle(
+          titleLarge: const TextStyle(
             fontFamily: 'RobotoCondensed',
             fontSize: 20,
             color: Colors.brown,
+          ),
+          titleSmall: TextStyle(
+            color: Colors.black,
+          ),
+          titleMedium: TextStyle(
+            color: Colors.black,
           ),
         ),
       ),
